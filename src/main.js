@@ -9,6 +9,7 @@ import Vue from "vue";
 import App from "./App.vue";
 import store from "./store/index";
 import router from "./router";
+import "./common/less/app.less";
 import "./components/global";
 import "./common/errorPlugin";
 import "./icons";

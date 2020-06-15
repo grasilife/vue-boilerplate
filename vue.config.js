@@ -1,11 +1,8 @@
 "use strict";
 
 const path = require("path");
-const CompressionWebpackPlugin = require("compression-webpack-plugin");
-const ProgressBarPlugin = require("progress-bar-webpack-plugin");
 const StyleLintPlugin = require("stylelint-webpack-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
-const chalk = require("chalk");
 
 const resolve = dir => {
   return path.join(__dirname, "./", dir);
@@ -21,7 +18,7 @@ function addStyleResource(rule) {
     .use("style-resource")
     .loader("style-resources-loader")
     .options({
-      patterns: [path.resolve(__dirname, "src/assets/less/variable.less")]
+      patterns: [path.resolve(__dirname, "src/common/less/variable.less")]
     });
 }
 const setOptimization = () => {
@@ -36,15 +33,7 @@ const setOptimization = () => {
   }
 };
 const genPlugins = () => {
-  const plugins = [
-    new ProgressBarPlugin({
-      format:
-        "  build [:bar] " +
-        chalk.green.bold(":percent") +
-        " (:elapsed seconds)",
-      clear: false
-    })
-  ];
+  const plugins = [];
   if (!isProd()) {
     plugins.push(
       //stylelint 支持在 Vue 单文件组件的样式部分的代码校验
@@ -132,7 +121,6 @@ module.exports = {
     config.when(!isProd(), config =>
       config.devtool("cheap-module-eval-source-map")
     );
-
     // plugin
     config.module
       .rule("svg")
@@ -157,33 +145,8 @@ module.exports = {
       return args;
     });
 
-    // webpack-html-plugin
-    config.plugin("html").tap(args => {
-      args[0].minify = {
-        removeComments: true,
-        collapseWhitespace: true,
-        removeAttributeQuotes: true,
-        useShortDoctype: true,
-        removeEmptyAttributes: true,
-        removeStyleLinkTypeAttributes: true,
-        keepClosingSlash: true,
-        minifyJS: true,
-        minifyCSS: true,
-        minifyURLs: true
-      };
-      return args;
-    });
-
     // optimization
     config.when(!isProd(), config => {
-      config
-        .plugin("ScriptExtHtmlWebpackPlugin")
-        .use("script-ext-html-webpack-plugin", [
-          {
-            // `runtime` must same as runtimeChunk name. default is `runtime`
-            inline: /runtime\..*\.js$/
-          }
-        ]);
       config.optimization.splitChunks({
         chunks: "all",
         cacheGroups: {
