@@ -11,16 +11,6 @@ const resolve = dir => {
 const isProd = () => {
   return process.env.NODE_ENV === "production";
 };
-
-//额外的配置,配置全局less
-function addStyleResource(rule) {
-  rule
-    .use("style-resource")
-    .loader("style-resources-loader")
-    .options({
-      patterns: [path.resolve(__dirname, "src/common/less/variable.less")]
-    });
-}
 const setOptimization = () => {
   if (isProd()) {
     return {
@@ -111,16 +101,6 @@ module.exports = {
   // webpack配置
   // see https://github.com/vuejs/vue-cli/blob/dev/docs/webpack.md
   chainWebpack: config => {
-    // style-resources-loader
-    //如果你想自动化导入文件 (用于颜色、变量、mixin……)，你可以使用 style-resources-loader
-    const types = ["vue-modules", "vue", "normal-modules", "normal"];
-    types.forEach(type =>
-      addStyleResource(config.module.rule("less").oneOf(type))
-    );
-    //webpack sourcemap 选项多种模式;参考https://segmentfault.com/a/1190000004280859
-    config.when(!isProd(), config =>
-      config.devtool("cheap-module-eval-source-map")
-    );
     // plugin
     config.module
       .rule("svg")
