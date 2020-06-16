@@ -7,8 +7,8 @@
  */
 export const routes = [
   {
-    name: "hello",
-    component: () => import("@/views/vuexTest/index.vue"),
+    name: "home",
+    component: () => import("../views/home/index.vue"),
     path: "/"
   }
 ];

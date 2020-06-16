@@ -85,7 +85,14 @@ module.exports = {
     // css预设器配置项
     loaderOptions: {},
     // 启用 CSS modules for all css / pre-processor files.
-    requireModuleExtension: true
+    requireModuleExtension: true,
+    loaderOptions: {
+      less: {
+        lessOptions: {
+          javascriptEnabled: true
+        }
+      }
+    }
   },
   parallel: require("os").cpus().length > 1,
   configureWebpack: () => ({

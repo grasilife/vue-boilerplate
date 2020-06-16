@@ -12,8 +12,7 @@ import router from "./router";
 import "./common/less/app.less";
 import "./icons";
 import "./filters";
-import "./plugins/element";
-import "./plugins/eventBus";
+import "./plugins/index";
 
 /* eslint-disable */
 Vue.config.productionTip = process.env.NODE_ENV === "production";
