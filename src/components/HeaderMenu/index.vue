@@ -50,8 +50,8 @@ export default {
         },
         {
           key: "VueMicroAppList",
-          title: "Vue 列表页",
-          path: "/vue/list"
+          title: "Vue 详情页",
+          path: "/vue/details"
         }
       ]
     };
