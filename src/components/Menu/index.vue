@@ -7,7 +7,7 @@
 -->
 <template>
   <div class="comp-menu">
-    <a-menu mode="inline" theme="dark" :selectedKeys="[selectKey]">
+    <a-menu :mode="mode" theme="dark" :selectedKeys="[selectKey]">
       <a-menu-item v-for="item in menus" :key="item.key" @click="changeMenu(item)">
         <router-link :to="{ path: item.path }">
           <a-icon v-if="item.icon" :type="item.icon" />
@@ -29,6 +29,13 @@ export default {
       required: true,
       default: function() {
         return [];
+      }
+    },
+    mode: {
+      type: String,
+      required: false,
+      default: function() {
+        return "vertical";
       }
     }
   },

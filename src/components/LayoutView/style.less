@@ -1,0 +1,28 @@
+.comp-layout-view {
+  width: 100%;
+  height: 100%;
+
+  .fade-enter-active,
+  .fade-leave-active {
+    transition: all 0.2s ease;
+  }
+
+  .fade-enter,
+  .fade-leave-active {
+    opacity: 0;
+  }
+
+  .header {
+    float: left;
+    width: 100%;
+    height: 46px;
+    background: #fff;
+    box-shadow: 0 1px 4px rgba(0, 21, 41, 0.08);
+  }
+
+  .body {
+    float: left;
+    width: 100%;
+    height: calc(100% - 46px);
+  }
+}

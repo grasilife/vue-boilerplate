@@ -1,20 +1,26 @@
 <template>
-  <div id="app">
-    <LayoutView></LayoutView>
+  <div class="comp-layout-view">
+    <div class="header">
+      <HeaderMenu></HeaderMenu>
+    </div>
+    <div class="body">
+      <router-view></router-view>
+    </div>
   </div>
 </template>
+
 <script>
-import LayoutView from "./components/LayoutView/index";
+import HeaderMenu from "../HeaderMenu/index";
 import { mapState, mapMutations, mapActions, mapGetters, Store } from "vuex";
 export default {
-  name: "app",
+  name: "LayoutView",
 
   props: {},
 
   mixins: [],
 
   components: {
-    LayoutView
+    HeaderMenu
   },
 
   data() {
@@ -34,10 +40,7 @@ export default {
   methods: {}
 };
 </script>
-<style lang="less" rel="stylesheet/less">
-#app {
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-}
+
+<style lang="less" rel="stylesheet/less" scoped>
+@import "./style.less";
 </style>

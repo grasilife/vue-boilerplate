@@ -1,23 +1,34 @@
 <template>
-  <div class="page-home">
-    <Menu :menus="menus"></Menu>
+  <div class="comp-header-menu">
+    <div class="header-menu-logo">
+      <Logo :title="systemName"></Logo>
+    </div>
+
+    <div class="header-menu-others">
+      <Menu :menus="menus" mode="horizontal"></Menu>
+    </div>
   </div>
 </template>
 
 <script>
-import Menu from "../../components/Menu/index";
+import Logo from "../Logo/index";
+import Menu from "../Menu//index";
 import { mapState, mapMutations, mapActions, mapGetters, Store } from "vuex";
 export default {
-  name: "home",
+  name: "HeaderMenu",
+
+  props: {},
 
   mixins: [],
 
   components: {
+    Logo,
     Menu
   },
 
   data() {
     return {
+      systemName: "营销系统",
       menus: [
         {
           key: "Home",
