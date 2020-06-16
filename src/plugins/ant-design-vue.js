@@ -6,7 +6,8 @@
  * @Description:
  */
 import Vue from "vue";
-import { Button, ConfigProvider, Menu } from "ant-design-vue";
+import { Button, ConfigProvider, Menu, Icon, Avatar } from "ant-design-vue";
+
 // Vue.use(Button);
 // Vue.use(ConfigProvider);
 // Vue.use(Button);
@@ -17,3 +18,5 @@ Vue.component(Menu.Item.name, Menu.Item);
 Vue.component(Menu.SubMenu.name, Menu.SubMenu);
 Vue.component(Menu.Divider.name, Menu.Divider);
 Vue.component(Menu.ItemGroup.name, Menu.ItemGroup);
+Vue.component(Icon.name, Icon);
+Vue.component(Avatar.name, Avatar);

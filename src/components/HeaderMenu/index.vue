@@ -5,7 +5,15 @@
     </div>
 
     <div class="header-menu-others">
-      <Menu :menus="menus" mode="horizontal"></Menu>
+      <div class="header-menu">
+        <Menu :menus="menus" mode="horizontal"></Menu>
+      </div>
+      <div class="header-other">
+        <a-icon type="bell" class="icon" />
+        <div class="avatar">
+          <a-avatar icon="user" />
+        </div>
+      </div>
     </div>
   </div>
 </template>
